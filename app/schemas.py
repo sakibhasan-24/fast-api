@@ -18,7 +18,7 @@ class issuePriority(str, Enum):
 
 class issueCreate(BaseModel):
     title:str=Field(min_length=3,max_length=50)
-    description:str=Field(min_length=15,max_length=200)
+    description:str=Field(min_length=5,max_length=200)
     priority:issuePriority=issuePriority.medium
 
 class issueUpdate(BaseModel):
@@ -29,9 +29,8 @@ class issueUpdate(BaseModel):
 
 
 class issueOut(BaseModel):
-    id:int
+    id:str
     title:str
     description:str
     priority:issuePriority
     status:IssueStatus
-    
