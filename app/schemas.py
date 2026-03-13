@@ -20,3 +20,18 @@ class issueCreate(BaseModel):
     title:str=Field(min_length=3,max_length=50)
     description:str=Field(min_length=15,max_length=200)
     priority:issuePriority=issuePriority.medium
+
+class issueUpdate(BaseModel):
+    title:Optional[str]=Field(default=None, min_length=3,max_length=50)
+    description:Optional[str]=Field(default=None,min_length=15,max_length=200)
+    priority:Optional[issuePriority]=None
+    status:Optional[IssueStatus]=None
+
+
+class issueOut(BaseModel):
+    id:int
+    title:str
+    description:str
+    priority:issuePriority
+    status:IssueStatus
+    
