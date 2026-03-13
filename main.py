@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+from app.routes.issues import router
 # create an instance of FastAPI
 app = FastAPI()
 
@@ -7,6 +7,10 @@ app = FastAPI()
 @app.get("/")
 def home():
     return {"message": "FastAPI is running successfully!😒"}
+
+
+app.include_router(router)
+
 
 # # # create another endpoint
 # # @app.get("/hello/{name}")
