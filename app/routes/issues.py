@@ -10,6 +10,16 @@ async def get_issues():
     return issues
 
 
+# get an single issue
+
+@router.get("/{issue_id}",response_model=issueOut,status_code=status.HTTP_200_OK)
+async def get_issue(issue_id:str):
+    issues=load_data()
+    for issue in issues:
+        if issue["id"]==issue_id:
+            return issue
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="Issue not found")
+
 # create issue
 @router.post("/",response_model=issueOut,status_code=status.HTTP_201_CREATED)
 async def create_issue(payload:issueCreate):
