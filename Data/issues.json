@@ -12,12 +12,5 @@
         "description": "This is a test issues,this is our first issues",
         "priority": "Medium",
         "status": "Open"
-    },
-    {
-        "id": "9e48dcdb-7dcd-4cf8-bc6b-89185a9b0adb",
-        "title": "string",
-        "description": "dfjsdhfjhsdhfjsdhfkjsdhfkjsdhfjksdfsidfhsdikufhsdkfndskndskfhjdsikfjsdifds",
-        "priority": "Low",
-        "status": "Open"
     }
 ]

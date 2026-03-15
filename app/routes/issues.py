@@ -60,3 +60,24 @@ async def update_issue(issue_id: str, payload: issueUpdate):
         status_code=status.HTTP_404_NOT_FOUND,
         detail="Issue not found"
     )
+
+
+# delete issue
+@router.delete("/{issue_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_issue(issue_id: str):
+
+    issues = load_data()
+
+    for issue in issues:
+
+        if issue["id"] == issue_id:
+
+            issues.remove(issue)
+
+            save_data(issues)
+
+            return
+
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+    )
