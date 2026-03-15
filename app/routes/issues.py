@@ -35,3 +35,28 @@ async def create_issue(payload:issueCreate):
     issues.append(new_issue)
     save_data(issues)
     return new_issue
+
+
+# update issue
+@router.patch("/{issue_id}", response_model=issueOut,status_code=status.HTTP_200_OK)
+async def update_issue(issue_id: str, payload: issueUpdate):
+    
+    issues = load_data()
+
+    for issue in issues:
+
+        if issue["id"] == issue_id:
+
+            update_data = payload.model_dump(exclude_unset=True)
+
+            for key, value in update_data.items():
+                issue[key] = value
+
+            save_data(issues)
+
+            return issue
+
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail="Issue not found"
+    )
