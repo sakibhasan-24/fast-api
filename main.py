@@ -64,3 +64,10 @@ app.include_router(router)
 #             return g
 #     raise HTTPException(status_code=404, detail="Gadget not found")
 
+
+
+# we will add data base for this project
+# we will use SQLAlchemy
+# we will use Pydantic
+# we will use FastAPI
+# authetication
